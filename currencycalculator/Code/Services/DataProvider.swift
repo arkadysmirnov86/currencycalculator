@@ -8,42 +8,38 @@
 
 import Foundation
 
-class DataProvider {
-    
-    enum Errors: Error {
-        case invalidURL
-        case dataIsEmpty
-    }
+class DataProvider: DataProviderType {
     
     func getRates(base: String, successHandler: @escaping (RatesList) -> Void, errorHandler: @escaping (Error) -> Void) {
         
         if let url = URL(string: .baseURL + base) {
             let task = URLSession.shared.dataTask(with: url) { (data, responce, error) in
                 if let error = error {
-                    errorHandler(error)
+                    DispatchQueue.main.async(errorHandler, with: error)
                 } else {
                     guard let data = data else {
-                        errorHandler(Errors.dataIsEmpty)
+                        DispatchQueue.main.async(errorHandler, with: DataProviderError.dataIsEmpty)
                         return
                     }
                     
                     let decoder = JSONDecoder()
                     do {
                         let result = try decoder.decode(RatesList.self, from: data)
-                        successHandler(result)
+                        DispatchQueue.main.async(successHandler, with: result)
                     } catch {
-                        errorHandler(error)
+                        DispatchQueue.main.async(errorHandler, with: error)
                     }
                 }
             }
             task.resume()
         } else {
-            errorHandler(Errors.invalidURL)
+            errorHandler(DataProviderError.invalidURL)
         }
         
     }
 }
 
+//TODO: move it to configuration (or config layer)
 private extension String {
     static let baseURL = "https://revolut.duckdns.org/latest?base="
 }
