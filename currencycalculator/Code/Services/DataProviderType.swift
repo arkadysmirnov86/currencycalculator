@@ -9,6 +9,5 @@
 import Foundation
 
 protocol DataProviderType {
-    
     func getRates(base: String, successHandler: @escaping (RatesList) -> Void, errorHandler: @escaping (Error) -> Void)
 }
