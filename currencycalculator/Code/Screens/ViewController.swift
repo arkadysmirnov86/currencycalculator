@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     private func setupTableView() {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: .cellReuseIdentifier)
         tableView?.dataSource = self
+        tableView?.delegate = self
     
     }
     
@@ -52,6 +53,20 @@ extension ViewController: UITableViewDataSource {
         let rate = viewModel?.rates[indexPath.row]
         cell.textLabel?.text = "\(rate?.currency ?? "") \(rate?.value ?? 0)"
         return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let currency = viewModel?.rates[indexPath.row].currency {
+            tableView.beginUpdates()
+            tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
+            tableView.cellForRow(at: indexPath)?.isSelected = false
+            viewModel?.baseCurrency = currency
+            tableView.endUpdates()
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
+        }
+        
     }
 }
 
