@@ -133,6 +133,7 @@
 		A6BA182D2124A7C3008F192B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */,
 				A65A36C02124A5D00011F644 /* Info.plist */,
 			);
 			path = "Supporting Files";
@@ -143,7 +144,6 @@
 			children = (
 				A6BA183A2124AE99008F192B /* ViewModel.swift */,
 				A6BA18412124B908008F192B /* Coordinator.swift */,
-				A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */,
 				A65A36B62124A5CD0011F644 /* ViewController.swift */,
 				A65A36B82124A5CD0011F644 /* Main.storyboard */,
 			);

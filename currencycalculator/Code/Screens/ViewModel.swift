@@ -29,10 +29,10 @@ class ViewModel {
         }
     }
     
-    private let dataProvider: DataProvider
-    private var timer: Timer?
+    private let dataProvider: DataProviderType
+    private weak var timer: Timer?
     
-    init(dataProvider: DataProvider) {
+    init(dataProvider: DataProviderType) {
         self.dataProvider = dataProvider
         fireTimer(base: self.base)
     }
@@ -42,23 +42,22 @@ class ViewModel {
         if self.timer != nil {
             timer?.invalidate()
         }
-        
-        self.timer = Timer(timeInterval: 1, repeats: true) {
-            [weak self] _ in
-            
-            self?.dataProvider.getRates(
-                base: base,
-                successHandler: {
-                    (ratesList) in
-                    
-                    self?.process(ratesList: ratesList)
-                    
-                }, errorHandler: {
-                    (error) in
-                    //TODO: add error handling
-                }
-            )
-        }
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func timerTick() {
+        self.dataProvider.getRates(
+            base: base,
+            successHandler: {
+                (ratesList) in
+                
+                self.process(ratesList: ratesList)
+                
+            }, errorHandler: {
+                (error) in
+                //TODO: add error handling
+            }
+        )
     }
     
     private func process(ratesList: RatesList) {
@@ -79,6 +78,10 @@ class ViewModel {
         }
         
         ratesChanged?()
+    }
+    
+    deinit {
+        timer?.invalidate()
     }
 }
 

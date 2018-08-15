@@ -14,7 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let window = UIWindow()
+        self.window = window
+        
+        let dataProvider = DataProvider()
+        let rootCoordinator = CalculatorCoordinator(dataProvider: dataProvider, window: window)
+        rootCoordinator.start()
+        
         return true
     }
 
