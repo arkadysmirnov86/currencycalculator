@@ -13,6 +13,9 @@
 		A65A36BC2124A5D00011F644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A36BB2124A5D00011F644 /* Assets.xcassets */; };
 		A65A36BF2124A5D00011F644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */; };
 		A65A36CA2124A5D00011F644 /* currencycalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A36C92124A5D00011F644 /* currencycalculatorTests.swift */; };
+		A6BA18332124A929008F192B /* RatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18322124A929008F192B /* RatesList.swift */; };
+		A6BA18352124ABA5008F192B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18342124ABA5008F192B /* DataProvider.swift */; };
+		A6BA18392124ABF1008F192B /* VoidClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18382124ABF1008F192B /* VoidClosure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		A65A36C52124A5D00011F644 /* currencycalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = currencycalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65A36C92124A5D00011F644 /* currencycalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currencycalculatorTests.swift; sourceTree = "<group>"; };
 		A65A36CB2124A5D00011F644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6BA18322124A929008F192B /* RatesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesList.swift; sourceTree = "<group>"; };
+		A6BA18342124ABA5008F192B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		A6BA18382124ABF1008F192B /* VoidClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidClosure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				A65A36B42124A5CD0011F644 /* AppDelegate.swift */,
-				A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */,
-				A65A36B62124A5CD0011F644 /* ViewController.swift */,
-				A65A36B82124A5CD0011F644 /* Main.storyboard */,
+				A6BA18372124ABD3008F192B /* Utils */,
+				A6BA18362124ABAE008F192B /* Services */,
+				A6BA182F2124A87C008F192B /* Enities */,
+				A6BA182E2124A866008F192B /* Screens */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -118,6 +125,40 @@
 				A65A36C02124A5D00011F644 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6BA182E2124A866008F192B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */,
+				A65A36B62124A5CD0011F644 /* ViewController.swift */,
+				A65A36B82124A5CD0011F644 /* Main.storyboard */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A6BA182F2124A87C008F192B /* Enities */ = {
+			isa = PBXGroup;
+			children = (
+				A6BA18322124A929008F192B /* RatesList.swift */,
+			);
+			path = Enities;
+			sourceTree = "<group>";
+		};
+		A6BA18362124ABAE008F192B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A6BA18342124ABA5008F192B /* DataProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A6BA18372124ABD3008F192B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A6BA18382124ABF1008F192B /* VoidClosure.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6BA18392124ABF1008F192B /* VoidClosure.swift in Sources */,
+				A6BA18332124A929008F192B /* RatesList.swift in Sources */,
 				A65A36B72124A5CD0011F644 /* ViewController.swift in Sources */,
+				A6BA18352124ABA5008F192B /* DataProvider.swift in Sources */,
 				A65A36B52124A5CD0011F644 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
