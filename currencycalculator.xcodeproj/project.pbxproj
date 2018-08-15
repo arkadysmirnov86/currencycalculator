@@ -77,12 +77,9 @@
 		A65A36B32124A5CD0011F644 /* currencycalculator */ = {
 			isa = PBXGroup;
 			children = (
-				A65A36B42124A5CD0011F644 /* AppDelegate.swift */,
-				A65A36B62124A5CD0011F644 /* ViewController.swift */,
-				A65A36B82124A5CD0011F644 /* Main.storyboard */,
-				A65A36BB2124A5D00011F644 /* Assets.xcassets */,
-				A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */,
-				A65A36C02124A5D00011F644 /* Info.plist */,
+				A6BA182B2124A79E008F192B /* Code */,
+				A6BA182C2124A7A6008F192B /* Resources */,
+				A6BA182D2124A7C3008F192B /* Supporting Files */,
 			);
 			path = currencycalculator;
 			sourceTree = "<group>";
@@ -94,6 +91,33 @@
 				A65A36CB2124A5D00011F644 /* Info.plist */,
 			);
 			path = currencycalculatorTests;
+			sourceTree = "<group>";
+		};
+		A6BA182B2124A79E008F192B /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				A65A36B42124A5CD0011F644 /* AppDelegate.swift */,
+				A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */,
+				A65A36B62124A5CD0011F644 /* ViewController.swift */,
+				A65A36B82124A5CD0011F644 /* Main.storyboard */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		A6BA182C2124A7A6008F192B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A65A36BB2124A5D00011F644 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A6BA182D2124A7C3008F192B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A65A36C02124A5D00011F644 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,7 +384,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862BKAUBH7;
-				INFOPLIST_FILE = currencycalculator/Info.plist;
+				INFOPLIST_FILE = "currencycalculator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 862BKAUBH7;
-				INFOPLIST_FILE = currencycalculator/Info.plist;
+				INFOPLIST_FILE = "currencycalculator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
