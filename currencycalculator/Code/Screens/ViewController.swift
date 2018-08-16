@@ -38,19 +38,37 @@ class ViewController: UIViewController {
     }
     
     private func updateTable() {
-        tableView?.reloadData()
+        tableView?.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
     }
 }
 
 extension ViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.rates.count ?? 0
+        switch section {
+        case 0:
+            return 1
+        default:
+            return (viewModel?.rates.count ?? 0) - 1
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rate: RateModel?
+        
+        switch indexPath.section {
+        case 0:
+            rate = viewModel?.rates[0]
+        default:
+            rate = viewModel?.rates[indexPath.row + 1]
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
-        let rate = viewModel?.rates[indexPath.row]
+        
         cell.textLabel?.text = "\(rate?.currency ?? "") \(rate?.value ?? 0)"
         return cell
     }
@@ -60,8 +78,9 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let currency = viewModel?.rates[indexPath.row].currency {
             tableView.beginUpdates()
-            tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
             tableView.cellForRow(at: indexPath)?.isSelected = false
+            tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
+            tableView.moveRow(at: IndexPath(row: 0, section: 0), to: IndexPath(row: 0, section: 1))
             viewModel?.baseCurrency = currency
             tableView.endUpdates()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)

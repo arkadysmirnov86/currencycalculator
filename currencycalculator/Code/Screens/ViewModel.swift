@@ -16,9 +16,9 @@ struct RateModel {
 class ViewModel {
     
     var ratesChanged: VoidClosure?
-    
     private (set) var rates: [RateModel] = [RateModel(currency: "EUR", value: 100)]
     
+    var baseValue: Decimal = 100.0
     var baseCurrency: String = "EUR" {
         didSet {
             if let index = rates.index(where: { $0.currency == baseCurrency }) {
@@ -30,8 +30,6 @@ class ViewModel {
     }
     
     var isEditing: Bool = false
-    
-    var baseValue: Decimal = 100.0
     
     private let dataProvider: DataProviderType
     private weak var timer: Timer?
