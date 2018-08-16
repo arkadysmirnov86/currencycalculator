@@ -48,7 +48,8 @@ class ViewController: UIViewController {
     }
     
     private func changeEditingState() {
-        tableView?.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
+        tableView?.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
+        (tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditCurrencyTableViewCell)?.rateTextField.becomeFirstResponder()
     }
 }
 
@@ -75,43 +76,54 @@ extension ViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             rate = viewModel.rates[0]
-            if viewModel.isEditing {
-                let editCell = tableView.dequeueReusableCell(withIdentifier: .editCellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
-                editCell.configure(currency: rate.currency, value: "\(rate.value)",
-                    fieldEditedClosure: {
-                        newValue in
-                        
-                        self.viewModel.baseValue = Decimal.init(string: newValue ?? "0") ?? 0
-                    }
-                )
-                cell = editCell
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
-                cell.textLabel?.text = "\(rate.currency) \(rate.value)"
-            }
+//            if viewModel.isEditing {
+//                let editCell = tableView.dequeueReusableCell(withIdentifier: .editCellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
+//                editCell.configure(currency: rate.currency, value: "\(rate.value)",
+//                    fieldEditedClosure: {
+//                        newValue in
+//
+//                        self.viewModel.baseValue = Decimal.init(string: newValue ?? "0") ?? 0
+//                    }
+//                )
+//                cell = editCell
+//            } else {
+//                cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
+//                cell.textLabel?.text = "\(rate.currency) \(rate.value)"
+//            }
         default:
             rate = viewModel.rates[indexPath.row + 1]
-            cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
-            cell.textLabel?.text = "\(rate.currency) \(rate.value)"
+//            cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
+//            cell.textLabel?.text = "\(rate.currency) \(rate.value)"
         }
-        
+        let editCell = tableView.dequeueReusableCell(withIdentifier: .editCellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
+        editCell.configure(currency: rate.currency, value: "\(rate.value)",
+            fieldEditedClosure: {
+                newValue in
+                
+                self.viewModel.baseValue = Decimal.init(string: newValue ?? "0") ?? 0
+            }
+        )
+        cell = editCell
         return cell
     }
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let currency = viewModel?.rates[indexPath.row].currency {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+        
+        if indexPath.section == 1, let currency = viewModel?.rates[indexPath.row + 1].currency {
             tableView.beginUpdates()
-            tableView.cellForRow(at: indexPath)?.isSelected = false
             tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
+            
             tableView.moveRow(at: IndexPath(row: 0, section: 0), to: IndexPath(row: 0, section: 1))
-            viewModel?.baseCurrency = currency
-            viewModel?.isEditing = true
             tableView.endUpdates()
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
+            viewModel.baseCurrency = currency
         }
         
+        
+        viewModel.isEditing = true
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
     }
 }
 
