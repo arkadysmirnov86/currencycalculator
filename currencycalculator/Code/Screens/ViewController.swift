@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var viewModel: ViewModel? {
+    var viewModel: ViewModel! {
         didSet {
             bindViewModel()
         }
@@ -28,16 +28,26 @@ class ViewController: UIViewController {
             
             self?.updateTable()
         }
+        viewModel?.isEditingChanged = {
+            [weak self] in
+            
+            self?.changeEditingState()
+        }
     }
     
     private func setupTableView() {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: .cellReuseIdentifier)
+        tableView?.register(UINib(nibName: "EditCurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: .editCellReuseIdentifier)
         tableView?.dataSource = self
         tableView?.delegate = self
     
     }
     
     private func updateTable() {
+        tableView?.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
+    }
+    
+    private func changeEditingState() {
         tableView?.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
     }
 }
@@ -59,17 +69,32 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let rate: RateModel?
+        let rate: RateModel
+        let cell: UITableViewCell
         
         switch indexPath.section {
         case 0:
-            rate = viewModel?.rates[0]
+            rate = viewModel.rates[0]
+            if viewModel.isEditing {
+                let editCell = tableView.dequeueReusableCell(withIdentifier: .editCellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
+                editCell.configure(currency: rate.currency, value: "\(rate.value)",
+                    fieldEditedClosure: {
+                        newValue in
+                        
+                        self.viewModel.baseValue = Decimal.init(string: newValue ?? "0") ?? 0
+                    }
+                )
+                cell = editCell
+            } else {
+                cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
+                cell.textLabel?.text = "\(rate.currency) \(rate.value)"
+            }
         default:
-            rate = viewModel?.rates[indexPath.row + 1]
+            rate = viewModel.rates[indexPath.row + 1]
+            cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
+            cell.textLabel?.text = "\(rate.currency) \(rate.value)"
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
         
-        cell.textLabel?.text = "\(rate?.currency ?? "") \(rate?.value ?? 0)"
         return cell
     }
 }
@@ -82,6 +107,7 @@ extension ViewController: UITableViewDelegate {
             tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
             tableView.moveRow(at: IndexPath(row: 0, section: 0), to: IndexPath(row: 0, section: 1))
             viewModel?.baseCurrency = currency
+            viewModel?.isEditing = true
             tableView.endUpdates()
             tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
         }
@@ -89,6 +115,10 @@ extension ViewController: UITableViewDelegate {
     }
 }
 
+
+
 private extension String {
     static let cellReuseIdentifier = "cell"
+    static let editCellReuseIdentifier = "editcell"
+    
 }

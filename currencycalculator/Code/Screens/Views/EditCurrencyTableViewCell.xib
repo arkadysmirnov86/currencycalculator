@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="84" id="FUt-ln-P7H" customClass="EditCurrencyTableViewCell" customModule="currencycalculator" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FUt-ln-P7H" id="JpK-8l-Inl">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mAH-Kn-kVR">
+                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="7t8-fR-KLk"/>
+                            <constraint firstAttribute="width" constant="50" id="Y9u-BG-g5c"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6G-2U-gz5">
+                        <rect key="frame" x="66" y="8" width="43.5" height="20.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-IS-DnC">
+                        <rect key="frame" x="66" y="37" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="value" borderStyle="roundedRect" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xH8-Uf-mCV">
+                        <rect key="frame" x="111.5" y="8" width="255.5" height="67.5"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="p6G-2U-gz5" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="8" id="6gq-Rg-pkD"/>
+                    <constraint firstItem="mAH-Kn-kVR" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="8" id="Ahu-4J-ZUl"/>
+                    <constraint firstAttribute="trailing" secondItem="xH8-Uf-mCV" secondAttribute="trailing" constant="8" id="CJG-k0-QH7"/>
+                    <constraint firstItem="p6G-2U-gz5" firstAttribute="leading" secondItem="mAH-Kn-kVR" secondAttribute="trailing" constant="8" id="Cc0-Kx-jd6"/>
+                    <constraint firstAttribute="bottom" secondItem="xH8-Uf-mCV" secondAttribute="bottom" constant="8" id="X3s-aJ-kk5"/>
+                    <constraint firstItem="xH8-Uf-mCV" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="8" id="eoI-fA-KzC"/>
+                    <constraint firstItem="bfh-IS-DnC" firstAttribute="leading" secondItem="mAH-Kn-kVR" secondAttribute="trailing" constant="8" id="fdV-LD-zWV"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bfh-IS-DnC" secondAttribute="bottom" constant="8" id="kHM-3X-bpL"/>
+                    <constraint firstItem="bfh-IS-DnC" firstAttribute="top" secondItem="p6G-2U-gz5" secondAttribute="bottom" constant="8" id="qPM-xT-0tu"/>
+                    <constraint firstItem="xH8-Uf-mCV" firstAttribute="leading" secondItem="bfh-IS-DnC" secondAttribute="trailing" constant="8" id="qfQ-gU-9Pv"/>
+                    <constraint firstItem="mAH-Kn-kVR" firstAttribute="leading" secondItem="JpK-8l-Inl" secondAttribute="leading" constant="8" id="yGT-9h-PQl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="currencyImageView" destination="mAH-Kn-kVR" id="yfm-ep-b3G"/>
+                <outlet property="currencyLabel" destination="p6G-2U-gz5" id="ETN-z2-IoV"/>
+                <outlet property="descriptionLabel" destination="bfh-IS-DnC" id="dqr-mY-xug"/>
+                <outlet property="rateTextField" destination="xH8-Uf-mCV" id="E6p-ij-iN2"/>
+            </connections>
+            <point key="canvasLocation" x="-37.5" y="114"/>
+        </tableViewCell>
+    </objects>
+</document>

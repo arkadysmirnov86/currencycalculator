@@ -15,10 +15,19 @@ struct RateModel {
 
 class ViewModel {
     
+    private var ratesListEntity: RatesList?
+    
     var ratesChanged: VoidClosure?
     private (set) var rates: [RateModel] = [RateModel(currency: "EUR", value: 100)]
     
-    var baseValue: Decimal = 100.0
+    var baseValue: Decimal = 100.0 {
+        didSet {
+            rates[0].value = baseValue
+            if let ratesList = ratesListEntity {
+                process(ratesList: ratesList)
+            }
+        }
+    }
     var baseCurrency: String = "EUR" {
         didSet {
             if let index = rates.index(where: { $0.currency == baseCurrency }) {
@@ -29,7 +38,12 @@ class ViewModel {
         }
     }
     
-    var isEditing: Bool = false
+    var isEditingChanged: VoidClosure?
+    var isEditing: Bool = false {
+        didSet {
+            isEditingChanged?()
+        }
+    }
     
     private let dataProvider: DataProviderType
     private weak var timer: Timer?
@@ -51,9 +65,10 @@ class ViewModel {
         self.dataProvider.getRates(
             base: baseCurrency,
             successHandler: {
-                (ratesList) in
+                ratesListEntity in
                 
-                self.process(ratesList: ratesList)
+                self.ratesListEntity = ratesListEntity
+                self.process(ratesList: ratesListEntity)
                 
             }, errorHandler: {
                 (error) in
