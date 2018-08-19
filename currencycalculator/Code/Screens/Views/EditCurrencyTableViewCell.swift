@@ -12,8 +12,9 @@ class EditCurrencyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var currencyImageView: UIImageView! {
         didSet {
-            currencyImageView.backgroundColor = .gray
             currencyImageView.layer.cornerRadius = 25
+            currencyImageView.layer.borderColor = UIColor.black.cgColor
+            currencyImageView.layer.borderWidth = 1
         }
     }
     @IBOutlet weak var currencyLabel: UILabel!
@@ -23,16 +24,54 @@ class EditCurrencyTableViewCell: UITableViewCell {
             rateTextField.addTarget(self, action: #selector(rateTextFieldDidChangeValue), for: UIControlEvents.editingChanged)
         }
     }
+    @IBOutlet weak var rateLabel: UILabel!
+    //REMARK: you could use layers instead view and constraints
+    @IBOutlet weak var underlineView: UIView!
 
     var fieldEditedClosure: ((String?) -> Void)?
     
-    func configure(currency: String, value: String, fieldEditedClosure: @escaping (String?) -> Void) {
+    func configure(currency: String, description: String, value: Decimal, fieldEditedClosure: @escaping (String?) -> Void) {
         currencyLabel.text = currency
-        rateTextField.text = value
+        descriptionLabel.text = description
+        
+        //TODO: specify rounding and formating rules
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 5
+        let rateString = formatter.string(from: value as NSDecimalNumber)
+        rateTextField.text = rateString
+        rateLabel.text = rateString
+        
         self.fieldEditedClosure = fieldEditedClosure
+        self.selectionStyle = .none
     }
     
     @objc private func rateTextFieldDidChangeValue(_ textField: UITextField) {
+        rateLabel.text = textField.text
         fieldEditedClosure?(textField.text)
+    }
+    
+    override var canBecomeFocused: Bool {
+        return true
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        rateTextField.isHidden = false
+        rateLabel.isHidden = true
+        underlineView.backgroundColor = UIColor.blue
+        return rateTextField.becomeFirstResponder()
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        rateTextField.isHidden = true
+        rateLabel.isHidden = false
+        underlineView.backgroundColor = .lightGray
+        return rateTextField.resignFirstResponder()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        underlineView.backgroundColor = .lightGray
+        rateLabel.isHidden = false
+        rateTextField.isHidden = true
     }
 }
