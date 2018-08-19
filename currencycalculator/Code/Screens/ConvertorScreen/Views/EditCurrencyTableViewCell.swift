@@ -80,8 +80,4 @@ class EditCurrencyTableViewCell: UITableViewCell {
         rateLabel.isHidden = false
         rateTextField.isHidden = true
     }
-    
-    @objc private func doneTapped() {
-        resignFirstResponder()
-    }
 }
