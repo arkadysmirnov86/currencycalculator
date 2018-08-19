@@ -31,12 +31,12 @@ class ConvertorViewController: UIViewController {
         viewModel?.ratesChanged = {
             [weak self] in
             
-            self?.updateTable()
+            self?.updateSecondSection()
         }
         viewModel?.isEditingChanged = {
             [weak self] in
             
-            self?.changeEditingState()
+            self?.updateFirstSection()
         }
     }
     
@@ -48,13 +48,13 @@ class ConvertorViewController: UIViewController {
     
     }
     
-    private func updateTable() {
+    private func updateSecondSection() {
         UIView.setAnimationsEnabled(false)
         tableView?.reloadSections(.secondSection, with: UITableViewRowAnimation.none)
         UIView.setAnimationsEnabled(true)
     }
     
-    private func changeEditingState() {
+    private func updateFirstSection() {
         tableView?.reloadSections(.firstSection, with: UITableViewRowAnimation.automatic)
         if viewModel.isEditing {
         tableView?.cellForRow(at: .firstRow)?.becomeFirstResponder()
