@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9k3-Qe-j4A">
-                        <rect key="frame" x="314" y="62.5" width="45" height="4"/>
+                        <rect key="frame" x="318" y="62.5" width="41" height="4"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="4" id="UwR-Zo-V2W"/>
@@ -70,8 +70,8 @@
                     <constraint firstAttribute="trailing" secondItem="xH8-Uf-mCV" secondAttribute="trailing" constant="16" id="CJG-k0-QH7"/>
                     <constraint firstItem="p6G-2U-gz5" firstAttribute="leading" secondItem="mAH-Kn-kVR" secondAttribute="trailing" constant="8" id="Cc0-Kx-jd6"/>
                     <constraint firstItem="9k3-Qe-j4A" firstAttribute="bottom" secondItem="rSO-Zx-zXJ" secondAttribute="bottom" id="O9w-5G-fKb"/>
-                    <constraint firstItem="9k3-Qe-j4A" firstAttribute="centerX" secondItem="rSO-Zx-zXJ" secondAttribute="centerX" id="QrS-2n-eWh"/>
-                    <constraint firstItem="9k3-Qe-j4A" firstAttribute="width" secondItem="rSO-Zx-zXJ" secondAttribute="width" id="SYH-Ve-TCf"/>
+                    <constraint firstItem="9k3-Qe-j4A" firstAttribute="trailing" secondItem="rSO-Zx-zXJ" secondAttribute="trailing" id="QrS-2n-eWh"/>
+                    <constraint firstItem="rSO-Zx-zXJ" firstAttribute="width" secondItem="9k3-Qe-j4A" secondAttribute="width" constant="4" id="SYH-Ve-TCf"/>
                     <constraint firstAttribute="bottom" secondItem="xH8-Uf-mCV" secondAttribute="bottom" constant="16" id="X3s-aJ-kk5"/>
                     <constraint firstItem="xH8-Uf-mCV" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="16" id="eoI-fA-KzC"/>
                     <constraint firstItem="bfh-IS-DnC" firstAttribute="leading" secondItem="mAH-Kn-kVR" secondAttribute="trailing" constant="8" id="fdV-LD-zWV"/>
