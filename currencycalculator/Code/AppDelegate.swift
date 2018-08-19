@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         
         let dataProvider = DataProvider()
-        let rootCoordinator = CalculatorCoordinator(dataProvider: dataProvider, window: window)
+        let rootCoordinator = ConvertorCoordinator(dataProvider: dataProvider, window: window)
         rootCoordinator.start()
         
         return true

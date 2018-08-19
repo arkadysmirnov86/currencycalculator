@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ConvertorViewController.swift
 //  currencycalculator
 //
 //  Created by Arkady Smirnov on 8/15/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ConvertorViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView? {
         didSet {
@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var viewModel: ViewModel! {
+    var viewModel: ConvertorViewModel! {
         didSet {
             bindViewModel()
         }
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     private func setupTableView() {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: .cellReuseIdentifier)
-        tableView?.register(UINib(nibName: "EditCurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: .editCellReuseIdentifier)
+        tableView?.register(UINib(nibName: "EditCurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: .cellReuseIdentifier)
         tableView?.dataSource = self
         tableView?.delegate = self
     
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension ConvertorViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -71,7 +71,6 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let rate: RateModel
-        let cell: UITableViewCell
         
         switch indexPath.section {
         case 0:
@@ -79,22 +78,24 @@ extension ViewController: UITableViewDataSource {
         default:
             rate = viewModel.rates[indexPath.row + 1]
         }
-        let editCell = tableView.dequeueReusableCell(withIdentifier: .editCellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
         
-        editCell.configure(currency: rate.currency, description: rate.description, value: rate.value,
+        cell.configure(currency: rate.currency, description: rate.description, value: rate.value,
             fieldEditedClosure: {
                 newValue in
                 
                 self.viewModel.baseValue = Decimal.init(string: newValue ?? "0") ?? 0
             }
         )
-        cell = editCell
+        
         return cell
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ConvertorViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
         
         tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.resignFirstResponder()
         
@@ -107,11 +108,9 @@ extension ViewController: UITableViewDelegate {
         }
         
         viewModel.isEditing = true
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
     }
 }
 
 private extension String {
     static let cellReuseIdentifier = "cell"
-    static let editCellReuseIdentifier = "editcell"
 }

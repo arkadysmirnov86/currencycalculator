@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  ConvertorViewModel.swift
 //  currencycalculator
 //
 //  Created by Arkady Smirnov on 8/15/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ViewModel {
+class ConvertorViewModel {
     
     private var ratesEntity: RatesEntity?
     
