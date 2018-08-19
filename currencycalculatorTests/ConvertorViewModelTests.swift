@@ -18,7 +18,7 @@ class ConvertorViewModelTests: XCTestCase {
         let currencyService = FakeCurrencyService()
         let defaultBaseRate = RateModel(currency: "FAKE", value: 100.0)
         
-        let viewModel = ConvertorViewModel(currencyService: currencyService, defaultBaseRate: defaultBaseRate)
+        let viewModel = ConvertorViewModel(currencyService: currencyService, baseRate: defaultBaseRate)
         viewModel.ratesChanged = {
             successExpectation.fulfill()
         }
@@ -35,7 +35,7 @@ class ConvertorViewModelTests: XCTestCase {
         let currencyService = FakeCurrencyService()
         let defaultBaseRate = RateModel(currency: "FAKE", value: 100.0)
         
-        let viewModel = ConvertorViewModel(currencyService: currencyService, defaultBaseRate: defaultBaseRate)
+        let viewModel = ConvertorViewModel(currencyService: currencyService, baseRate: defaultBaseRate)
         viewModel.ratesChanged = {
             successExpectation.fulfill()
         }
@@ -70,7 +70,7 @@ class ConvertorViewModelTests: XCTestCase {
         let currencyService = FakeCurrencyService()
         let defaultBaseRate = RateModel(currency: "FAKE", value: 100.0)
         
-        let viewModel = ConvertorViewModel(currencyService: currencyService, defaultBaseRate: defaultBaseRate)
+        let viewModel = ConvertorViewModel(currencyService: currencyService, baseRate: defaultBaseRate)
         viewModel.ratesChanged = {
             if viewModel.baseCurrency == expectedCurrency {
                 successExpectation.fulfill()
@@ -90,7 +90,7 @@ class ConvertorViewModelTests: XCTestCase {
         let currencyService = FakeCurrencyService()
         let defaultBaseRate = RateModel(currency: "FAKE", value: 100.0)
         
-        let viewModel = ConvertorViewModel(currencyService: currencyService, defaultBaseRate: defaultBaseRate)
+        let viewModel = ConvertorViewModel(currencyService: currencyService, baseRate: defaultBaseRate)
         viewModel.ratesChanged = {
             if viewModel.baseCurrency == expectedCurrency, viewModel.rates[1].currency == defaultBaseRate.currency
                 && viewModel.rates[1].value == defaultBaseRate.value {
