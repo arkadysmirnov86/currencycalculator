@@ -22,6 +22,11 @@ class ConvertorViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
     private func bindViewModel() {
         viewModel?.ratesChanged = {
             [weak self] in
@@ -58,6 +63,21 @@ class ConvertorViewController: UIViewController {
         } else {
             view.endEditing(true)
         }
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        let userInfo = notification.userInfo
+        let keyboardFrame = userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        tableView?.contentInset.bottom = keyboardFrame.height
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        tableView?.contentInset.bottom = 0
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+       NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
 }
 
@@ -103,7 +123,7 @@ extension ConvertorViewController: UITableViewDataSource {
 
 extension ConvertorViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.section == 1, let currency = viewModel?.rates[indexPath.row + 1].currency else {
+        guard indexPath.section == .secondSection, let currency = viewModel?.rates[indexPath.row + 1].currency else {
             viewModel.isEditing = false
             return
         }
@@ -122,6 +142,10 @@ extension ConvertorViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66.0
     }
+}
+
+private extension Int {
+    static let secondSection = 1
 }
 
 private extension IndexSet {
