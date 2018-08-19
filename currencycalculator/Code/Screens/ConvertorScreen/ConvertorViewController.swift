@@ -124,7 +124,7 @@ extension ConvertorViewController: UITableViewDataSource {
 extension ConvertorViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.section == .secondSection, let currency = viewModel?.rates[indexPath.row + 1].currency else {
-            viewModel.isEditing = false
+            viewModel.isEditing = !viewModel.isEditing
             return
         }
         
