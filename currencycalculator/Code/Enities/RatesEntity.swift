@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RatesList: Decodable {
+struct RatesEntity: Decodable {
     var base: String
     var date: Date
     var rates: [String: Decimal]
@@ -18,7 +18,7 @@ struct RatesList: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: RatesList.CodingKeys.self)
+        let container = try decoder.container(keyedBy: RatesEntity.CodingKeys.self)
         
         self.base = try container.decode(String.self, forKey: .base)
         

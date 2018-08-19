@@ -24,7 +24,8 @@ class CalculatorCoordinator: Coordinator {
     
     func start() {
         let viewController = self.instantiate(ViewController.self)
-        let viewModel = ViewModel(dataProvider: dataProvider)
+        let currencyService = CurrencyService(dataProvider: dataProvider)
+        let viewModel = ViewModel(currencyService: currencyService)
         viewController.viewModel = viewModel
         window.rootViewController = viewController
         window.makeKeyAndVisible()

@@ -10,7 +10,7 @@ import Foundation
 
 class DataProvider: DataProviderType {
     
-    func getRates(base: String, successHandler: @escaping (RatesList) -> Void, errorHandler: @escaping (Error) -> Void) {
+    func getRates(base: String, successHandler: @escaping (RatesEntity) -> Void, errorHandler: @escaping (Error) -> Void) {
         
         if let url = URL(string: .baseURL + base) {
             let task = URLSession.shared.dataTask(with: url) { (data, responce, error) in
@@ -24,7 +24,7 @@ class DataProvider: DataProviderType {
                     
                     let decoder = JSONDecoder()
                     do {
-                        let result = try decoder.decode(RatesList.self, from: data)
+                        let result = try decoder.decode(RatesEntity.self, from: data)
                         DispatchQueue.main.async(successHandler, with: result)
                     } catch {
                         DispatchQueue.main.async(errorHandler, with: error)

@@ -15,7 +15,7 @@ struct RateModel {
 
 class ViewModel {
     
-    private var ratesListEntity: RatesList?
+    private var ratesEntity: RatesEntity?
     
     var ratesChanged: VoidClosure?
     private (set) var rates: [RateModel] = [RateModel(currency: "EUR", value: 100)]
@@ -23,8 +23,8 @@ class ViewModel {
     var baseValue: Decimal = 100.0 {
         didSet {
             rates[0].value = baseValue
-            if let ratesList = ratesListEntity {
-                process(ratesList: ratesList)
+            if let ratesList = ratesEntity {
+                process(ratesEntity: ratesList)
             }
         }
     }
@@ -33,7 +33,7 @@ class ViewModel {
             if let index = rates.index(where: { $0.currency == baseCurrency }) {
                 let baseRate = rates.remove(at: index)
                 rates.insert(baseRate, at: 0)
-                self.fireTimer(base: baseCurrency)
+                self.currencyService.baseCurrency = baseCurrency
             }
         }
     }
@@ -45,46 +45,26 @@ class ViewModel {
         }
     }
     
-    private let dataProvider: DataProviderType
-    private weak var timer: Timer?
+    private let currencyService: CurrencyService
     
-    init(dataProvider: DataProviderType) {
-        self.dataProvider = dataProvider
-        fireTimer(base: self.baseCurrency)
-    }
-    
-    private func fireTimer(base: String) {
-        
-        if self.timer != nil {
-            timer?.invalidate()
+    init(currencyService: CurrencyService) {
+        self.currencyService = currencyService
+        self.currencyService.subscribeToRatesUpdate(baseCurrency: self.baseCurrency) {
+            ratesEntity in
+            
+            self.ratesEntity = ratesEntity
+            self.process(ratesEntity: ratesEntity)
         }
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
     }
     
-    @objc private func timerTick() {
-        self.dataProvider.getRates(
-            base: baseCurrency,
-            successHandler: {
-                ratesListEntity in
-                
-                self.ratesListEntity = ratesListEntity
-                self.process(ratesList: ratesListEntity)
-                
-            }, errorHandler: {
-                (error) in
-                //TODO: add error handling
-            }
-        )
-    }
-    
-    private func process(ratesList: RatesList) {
-        guard baseCurrency == ratesList.base else {
+    private func process(ratesEntity: RatesEntity) {
+        guard baseCurrency == ratesEntity.base else {
             return
         }
         
         let baseValue = rates[0].value
         
-        ratesList.rates.forEach { (key, value) in
+        ratesEntity.rates.forEach { (key, value) in
             let newRate = RateModel(currency: key, value: value * baseValue)
             
             if let existingIndex = rates.index(where: { $0.currency == key } ) {
@@ -96,9 +76,4 @@ class ViewModel {
         
         ratesChanged?()
     }
-    
-    deinit {
-        timer?.invalidate()
-    }
 }
-

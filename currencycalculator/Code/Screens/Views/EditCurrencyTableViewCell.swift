@@ -43,6 +43,13 @@ class EditCurrencyTableViewCell: UITableViewCell {
         
         self.fieldEditedClosure = fieldEditedClosure
         self.selectionStyle = .none
+        
+        //TODO: Here should be loading image from resources by currency key:
+        //      currencyImageView.#imageLiteral(resourceName: "\(flag_\(currency))")
+        //  or from particular endpoint (you could you https://github.com/onevcat/Kingfisher for that):
+        //      currencyImageView.kf.setImage(URL("somestring"))
+        
+        
     }
     
     @objc private func rateTextFieldDidChangeValue(_ textField: UITextField) {

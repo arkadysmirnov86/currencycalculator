@@ -80,7 +80,12 @@ extension ViewController: UITableViewDataSource {
             rate = viewModel.rates[indexPath.row + 1]
         }
         let editCell = tableView.dequeueReusableCell(withIdentifier: .editCellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
-        editCell.configure(currency: rate.currency, description: "here should be desciption ", value: rate.value,
+        
+        
+        
+        let descroption = NSLocalizedString(rate.currency, comment: "")
+        
+        editCell.configure(currency: rate.currency, description: descroption, value: rate.value,
             fieldEditedClosure: {
                 newValue in
                 

@@ -13,7 +13,7 @@
 		A65A36BC2124A5D00011F644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65A36BB2124A5D00011F644 /* Assets.xcassets */; };
 		A65A36BF2124A5D00011F644 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65A36BD2124A5D00011F644 /* LaunchScreen.storyboard */; };
 		A65A36CA2124A5D00011F644 /* currencycalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A36C92124A5D00011F644 /* currencycalculatorTests.swift */; };
-		A6BA18332124A929008F192B /* RatesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18322124A929008F192B /* RatesList.swift */; };
+		A6BA18332124A929008F192B /* RatesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18322124A929008F192B /* RatesEntity.swift */; };
 		A6BA18352124ABA5008F192B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18342124ABA5008F192B /* DataProvider.swift */; };
 		A6BA18392124ABF1008F192B /* VoidClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18382124ABF1008F192B /* VoidClosure.swift */; };
 		A6BA183B2124AE99008F192B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA183A2124AE99008F192B /* ViewModel.swift */; };
@@ -23,6 +23,8 @@
 		A6BA18462124B9A7008F192B /* DataProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18452124B9A7008F192B /* DataProviderError.swift */; };
 		A6BA18492125F8D4008F192B /* EditCurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18482125F8D4008F192B /* EditCurrencyTableViewCell.swift */; };
 		A6BA184B2125F90E008F192B /* EditCurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6BA184A2125F90E008F192B /* EditCurrencyTableViewCell.xib */; };
+		A6BA184D2129546D008F192B /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA184C2129546D008F192B /* CurrencyService.swift */; };
+		A6BA184F21295A9A008F192B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6BA184E21295A9A008F192B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +48,7 @@
 		A65A36C52124A5D00011F644 /* currencycalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = currencycalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65A36C92124A5D00011F644 /* currencycalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currencycalculatorTests.swift; sourceTree = "<group>"; };
 		A65A36CB2124A5D00011F644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6BA18322124A929008F192B /* RatesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesList.swift; sourceTree = "<group>"; };
+		A6BA18322124A929008F192B /* RatesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesEntity.swift; sourceTree = "<group>"; };
 		A6BA18342124ABA5008F192B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		A6BA18382124ABF1008F192B /* VoidClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidClosure.swift; sourceTree = "<group>"; };
 		A6BA183A2124AE99008F192B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -56,6 +58,8 @@
 		A6BA18452124B9A7008F192B /* DataProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderError.swift; sourceTree = "<group>"; };
 		A6BA18482125F8D4008F192B /* EditCurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		A6BA184A2125F90E008F192B /* EditCurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCurrencyTableViewCell.xib; sourceTree = "<group>"; };
+		A6BA184C2129546D008F192B /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		A6BA184E21295A9A008F192B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				A65A36BB2124A5D00011F644 /* Assets.xcassets */,
+				A6BA184E21295A9A008F192B /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -158,7 +163,7 @@
 		A6BA182F2124A87C008F192B /* Enities */ = {
 			isa = PBXGroup;
 			children = (
-				A6BA18322124A929008F192B /* RatesList.swift */,
+				A6BA18322124A929008F192B /* RatesEntity.swift */,
 			);
 			path = Enities;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				A6BA18342124ABA5008F192B /* DataProvider.swift */,
 				A6BA18452124B9A7008F192B /* DataProviderError.swift */,
 				A6BA18432124B940008F192B /* DataProviderType.swift */,
+				A6BA184C2129546D008F192B /* CurrencyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -282,6 +288,7 @@
 				A65A36BF2124A5D00011F644 /* LaunchScreen.storyboard in Resources */,
 				A65A36BC2124A5D00011F644 /* Assets.xcassets in Resources */,
 				A6BA184B2125F90E008F192B /* EditCurrencyTableViewCell.xib in Resources */,
+				A6BA184F21295A9A008F192B /* Localizable.strings in Resources */,
 				A65A36BA2124A5CD0011F644 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,10 +311,11 @@
 				A6BA18462124B9A7008F192B /* DataProviderError.swift in Sources */,
 				A6BA18442124B940008F192B /* DataProviderType.swift in Sources */,
 				A6BA18392124ABF1008F192B /* VoidClosure.swift in Sources */,
-				A6BA18332124A929008F192B /* RatesList.swift in Sources */,
+				A6BA18332124A929008F192B /* RatesEntity.swift in Sources */,
 				A65A36B72124A5CD0011F644 /* ViewController.swift in Sources */,
 				A6BA18402124B7AD008F192B /* DispatchQueue+Closure.swift in Sources */,
 				A6BA18352124ABA5008F192B /* DataProvider.swift in Sources */,
+				A6BA184D2129546D008F192B /* CurrencyService.swift in Sources */,
 				A6BA18492125F8D4008F192B /* EditCurrencyTableViewCell.swift in Sources */,
 				A6BA183B2124AE99008F192B /* ViewModel.swift in Sources */,
 				A65A36B52124A5CD0011F644 /* AppDelegate.swift in Sources */,

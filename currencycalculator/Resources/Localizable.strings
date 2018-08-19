@@ -1,0 +1,44 @@
+/* 
+  Currencies.strings
+  currencycalculator
+
+  Created by Arkady Smirnov on 8/19/18.
+  Copyright © 2018 Arkady Smirnov. All rights reserved.
+*/
+
+"EUR" = "European euro";
+"USD" = "US Dollar";
+"GBP" = "British Pound";
+"CHF" = "Swiss Franc";
+"NZD" = "New Zealand Dollar";
+"USD" = "United States Dollar";
+"JPY" = "Japanese Yen";
+"GBP" = "United Kingdom Pound";
+"AUD" = "Australian Dollar";
+"RON" = "Romanian Leu";
+"MYR" = "Malaysian ringgit";
+"ISK" = "Icelandic krona";
+"CAD" = "Canadian dollar";
+"DKK" = "Danish krone";
+"PHP" = "Philippine peso";
+"CZK" = "Czech koruna";
+"PLN" = "Polish zloty";
+"RUB" = "Russian ruble";
+"SGD" = "Singapore dollar";
+"BRL" = "Brazilian real";
+"SEK" = "Swedish krona";
+"HRK" = "Croatian kuna";
+"HKD" = "Hong Kong dollar";
+"BGN" = "Bulgarian lev";
+"TRY" = "Turkish lira";
+"MXN" = "Mexican peso";
+"HUF" = "Hungarian forint";
+"KRW" = "South Korean won";
+"NOK" = "Norwegian krone";
+"INR" = "Indian rupee";
+"ILS" = "Israeli new shekel";
+"IDR" = "Indonesian rupiah";
+"THB" = "Thai baht";
+"CHY" = "Chinese Yuan Renminbi";
+"ZAR" = "South African rand";
+
