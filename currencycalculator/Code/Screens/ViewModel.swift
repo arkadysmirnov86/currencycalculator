@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct RateModel {
-    var currency: String
-    var value: Decimal
-}
-
 class ViewModel {
     
     private var ratesEntity: RatesEntity?

@@ -48,8 +48,7 @@ class EditCurrencyTableViewCell: UITableViewCell {
         //      currencyImageView.#imageLiteral(resourceName: "\(flag_\(currency))")
         //  or from particular endpoint (you could you https://github.com/onevcat/Kingfisher for that):
         //      currencyImageView.kf.setImage(URL("somestring"))
-        
-        
+        //  or just loading Data(url: url) on separate queue.
     }
     
     @objc private func rateTextFieldDidChangeValue(_ textField: UITextField) {

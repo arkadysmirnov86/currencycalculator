@@ -25,6 +25,7 @@
 		A6BA184B2125F90E008F192B /* EditCurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6BA184A2125F90E008F192B /* EditCurrencyTableViewCell.xib */; };
 		A6BA184D2129546D008F192B /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA184C2129546D008F192B /* CurrencyService.swift */; };
 		A6BA184F21295A9A008F192B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6BA184E21295A9A008F192B /* Localizable.strings */; };
+		A6BA185121296004008F192B /* RateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA185021296004008F192B /* RateModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		A6BA184A2125F90E008F192B /* EditCurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCurrencyTableViewCell.xib; sourceTree = "<group>"; };
 		A6BA184C2129546D008F192B /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 		A6BA184E21295A9A008F192B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A6BA185021296004008F192B /* RateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			children = (
 				A6BA18472125F86C008F192B /* Views */,
 				A6BA183A2124AE99008F192B /* ViewModel.swift */,
+				A6BA185021296004008F192B /* RateModel.swift */,
 				A6BA18412124B908008F192B /* Coordinator.swift */,
 				A65A36B62124A5CD0011F644 /* ViewController.swift */,
 				A65A36B82124A5CD0011F644 /* Main.storyboard */,
@@ -310,6 +313,7 @@
 				A6BA18422124B908008F192B /* Coordinator.swift in Sources */,
 				A6BA18462124B9A7008F192B /* DataProviderError.swift in Sources */,
 				A6BA18442124B940008F192B /* DataProviderType.swift in Sources */,
+				A6BA185121296004008F192B /* RateModel.swift in Sources */,
 				A6BA18392124ABF1008F192B /* VoidClosure.swift in Sources */,
 				A6BA18332124A929008F192B /* RatesEntity.swift in Sources */,
 				A65A36B72124A5CD0011F644 /* ViewController.swift in Sources */,
