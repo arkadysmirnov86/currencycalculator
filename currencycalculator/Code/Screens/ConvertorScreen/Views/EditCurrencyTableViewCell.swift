@@ -36,7 +36,8 @@ class EditCurrencyTableViewCell: UITableViewCell {
         
         //TODO: specify rounding and formating rules
         let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 5
+        formatter.maximumFractionDigits = .maximumFractionDigits
+        formatter.roundingMode = .halfEven
         let rateString = formatter.string(from: value as NSDecimalNumber)
         rateTextField.text = rateString
         rateLabel.text = rateString
@@ -80,4 +81,8 @@ class EditCurrencyTableViewCell: UITableViewCell {
         rateLabel.isHidden = false
         rateTextField.isHidden = true
     }
+}
+
+private extension Int {
+    static let maximumFractionDigits = 2
 }
