@@ -21,7 +21,7 @@ class EditCurrencyTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var rateTextField: UITextField! {
         didSet {
-            rateTextField.addTarget(self, action: #selector(rateTextFieldDidChangeValue), for: UIControlEvents.editingChanged)
+            rateTextField.addTarget(self, action: #selector(rateTextFieldEditingChanged), for: UIControlEvents.editingChanged)
         }
     }
     @IBOutlet weak var rateLabel: UILabel!
@@ -34,7 +34,6 @@ class EditCurrencyTableViewCell: UITableViewCell {
         currencyLabel.text = currency
         descriptionLabel.text = description
         
-        //TODO: specify rounding and formating rules
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = .maximumFractionDigits
         formatter.roundingMode = .halfEven
@@ -43,18 +42,9 @@ class EditCurrencyTableViewCell: UITableViewCell {
         rateLabel.text = rateString
         
         self.fieldEditedClosure = fieldEditedClosure
-        self.selectionStyle = .none
+        selectionStyle = .none
         
-        //TODO: Here should be loading image from resources by currency key:
-        //      currencyImageView.#imageLiteral(resourceName: "\(flag_\(currency))")
-        //  or from particular endpoint (you could you https://github.com/onevcat/Kingfisher for that):
-        //      currencyImageView.kf.setImage(URL("somestring"))
-        //  or just loading Data(url: url) on separate queue.
-    }
-    
-    @objc private func rateTextFieldDidChangeValue(_ textField: UITextField) {
-        rateLabel.text = textField.text
-        fieldEditedClosure?(textField.text)
+        loadImage(for: currency)
     }
     
     override var canBecomeFocused: Bool {
@@ -80,6 +70,19 @@ class EditCurrencyTableViewCell: UITableViewCell {
         underlineView.backgroundColor = .lightGray
         rateLabel.isHidden = false
         rateTextField.isHidden = true
+    }
+    
+    @objc private func rateTextFieldEditingChanged(_ textField: UITextField) {
+        rateLabel.text = textField.text
+        fieldEditedClosure?(textField.text)
+    }
+    
+    private func loadImage(for currenct: String) {
+        //TODO: Here should be loading image from resources by currency key:
+        //      currencyImageView.#imageLiteral(resourceName: "\(flag_\(currency))")
+        //  or from particular endpoint (you could you https://github.com/onevcat/Kingfisher for that):
+        //      currencyImageView.kf.setImage(URL("somestring"))
+        //  or just loading Data(url: url) on separate queue.
     }
 }
 
