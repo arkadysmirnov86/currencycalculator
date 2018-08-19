@@ -10,7 +10,7 @@ import Foundation
 
 class CurrencyService {
     
-    static let timeInterval: TimeInterval = 1
+    static let timeInterval: TimeInterval = 10
     
     private var dataProvider: DataProviderType
     private weak var timer: Timer?

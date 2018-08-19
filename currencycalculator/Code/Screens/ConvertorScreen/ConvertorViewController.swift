@@ -44,12 +44,20 @@ class ConvertorViewController: UIViewController {
     }
     
     private func updateTable() {
-        tableView?.reloadSections(IndexSet(integer: 1), with: UITableViewRowAnimation.automatic)
+        UIView.setAnimationsEnabled(false)
+        tableView?.beginUpdates()
+        tableView?.reloadSections(.secondSection, with: UITableViewRowAnimation.none)
+        tableView?.endUpdates()
+        UIView.setAnimationsEnabled(true)
     }
     
     private func changeEditingState() {
-        tableView?.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
-        tableView?.cellForRow(at: IndexPath(row: 0, section: 0))?.becomeFirstResponder()
+        tableView?.reloadSections(.firstSection, with: UITableViewRowAnimation.automatic)
+        if viewModel.isEditing {
+        tableView?.cellForRow(at: .firstRow)?.becomeFirstResponder()
+        } else {
+            view.endEditing(true)
+        }
     }
 }
 
@@ -72,19 +80,20 @@ extension ConvertorViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let rate: RateModel
         
-        switch indexPath.section {
-        case 0:
+        switch indexPath {
+        case .firstRow:
             rate = viewModel.rates[0]
         default:
             rate = viewModel.rates[indexPath.row + 1]
         }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) as? EditCurrencyTableViewCell ?? EditCurrencyTableViewCell()
         
         cell.configure(currency: rate.currency, description: rate.description, value: rate.value,
             fieldEditedClosure: {
                 newValue in
                 
-                self.viewModel.baseValue = Decimal.init(string: newValue ?? "0") ?? 0
+                self.viewModel.baseValue = Decimal(string: newValue ?? "0") ?? 0
             }
         )
         
@@ -94,21 +103,35 @@ extension ConvertorViewController: UITableViewDataSource {
 
 extension ConvertorViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
-        
-        tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.resignFirstResponder()
-        
-        if indexPath.section == 1, let currency = viewModel?.rates[indexPath.row + 1].currency {
-            tableView.beginUpdates()
-            tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
-            tableView.moveRow(at: IndexPath(row: 0, section: 0), to: IndexPath(row: 0, section: 1))
-            tableView.endUpdates()
-            viewModel.baseCurrency = currency
+        guard indexPath.section == 1, let currency = viewModel?.rates[indexPath.row + 1].currency else {
+            viewModel.isEditing = false
+            return
         }
         
+        tableView.scrollToRow(at: .firstRow, at: UITableViewScrollPosition.top, animated: false)
+        tableView.cellForRow(at: .firstRow)?.resignFirstResponder()
+        
+        tableView.beginUpdates()
+        tableView.moveRow(at: indexPath, to: .firstRow)
+        tableView.moveRow(at: .firstRow, to: .secondRow)
+        tableView.endUpdates()
+        viewModel.baseCurrency = currency
         viewModel.isEditing = true
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 66.0
+    }
+}
+
+private extension IndexSet {
+    static let firstSection = IndexSet(integer: 0)
+    static let secondSection = IndexSet(integer: 1)
+}
+
+private extension IndexPath {
+    static let firstRow = IndexPath(row: 0, section: 0)
+    static let secondRow = IndexPath(row: 0, section: 1)
 }
 
 private extension String {

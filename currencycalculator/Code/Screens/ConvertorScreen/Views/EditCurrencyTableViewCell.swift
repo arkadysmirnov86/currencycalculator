@@ -22,6 +22,10 @@ class EditCurrencyTableViewCell: UITableViewCell {
     @IBOutlet weak var rateTextField: UITextField! {
         didSet {
             rateTextField.addTarget(self, action: #selector(rateTextFieldDidChangeValue), for: UIControlEvents.editingChanged)
+//            let toolbar = UIToolbar()
+//            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+//            toolbar.items = [doneItem]
+//            rateTextField.inputAccessoryView = toolbar
         }
     }
     @IBOutlet weak var rateLabel: UILabel!
@@ -79,5 +83,9 @@ class EditCurrencyTableViewCell: UITableViewCell {
         underlineView.backgroundColor = .lightGray
         rateLabel.isHidden = false
         rateTextField.isHidden = true
+    }
+    
+    @objc private func doneTapped() {
+        resignFirstResponder()
     }
 }
