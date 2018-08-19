@@ -27,6 +27,7 @@
 		A6BA184F21295A9A008F192B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6BA184E21295A9A008F192B /* Localizable.strings */; };
 		A6BA185121296004008F192B /* RateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA185021296004008F192B /* RateModel.swift */; };
 		A6BA185421296347008F192B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA185321296347008F192B /* Coordinator.swift */; };
+		A6BA185721297ADB008F192B /* CurrencyServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA185621297ADB008F192B /* CurrencyServiceType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		A6BA184E21295A9A008F192B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A6BA185021296004008F192B /* RateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateModel.swift; sourceTree = "<group>"; };
 		A6BA185321296347008F192B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A6BA185621297ADB008F192B /* CurrencyServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				A6BA18452124B9A7008F192B /* DataProviderError.swift */,
 				A6BA18432124B940008F192B /* DataProviderType.swift */,
 				A6BA184C2129546D008F192B /* CurrencyService.swift */,
+				A6BA185621297ADB008F192B /* CurrencyServiceType.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -210,8 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				A6BA18472125F86C008F192B /* Views */,
+				A6BA185821297C0C008F192B /* Models */,
 				A6BA183A2124AE99008F192B /* ConvertorViewModel.swift */,
-				A6BA185021296004008F192B /* RateModel.swift */,
 				A6BA18412124B908008F192B /* ConvertorCoordinator.swift */,
 				A65A36B62124A5CD0011F644 /* ConvertorViewController.swift */,
 			);
@@ -224,6 +227,14 @@
 				A6BA185321296347008F192B /* Coordinator.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		A6BA185821297C0C008F192B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6BA185021296004008F192B /* RateModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +347,7 @@
 				A6BA18392124ABF1008F192B /* VoidClosure.swift in Sources */,
 				A6BA18332124A929008F192B /* RatesEntity.swift in Sources */,
 				A6BA185421296347008F192B /* Coordinator.swift in Sources */,
+				A6BA185721297ADB008F192B /* CurrencyServiceType.swift in Sources */,
 				A65A36B72124A5CD0011F644 /* ConvertorViewController.swift in Sources */,
 				A6BA18402124B7AD008F192B /* DispatchQueue+Closure.swift in Sources */,
 				A6BA18352124ABA5008F192B /* DataProvider.swift in Sources */,

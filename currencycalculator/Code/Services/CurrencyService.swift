@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CurrencyService {
+class CurrencyService: CurrencyServiceType {
     
     static let timeInterval: TimeInterval = 1
     
@@ -24,9 +24,10 @@ class CurrencyService {
         self.timer = Timer.scheduledTimer(timeInterval: CurrencyService.timeInterval, target: self, selector: #selector(fetchRates), userInfo: nil, repeats: true)
     }
     
-    func subscribeToRatesUpdate(baseCurrency: String, successClosure: @escaping (RatesEntity) -> Void, errorClosure: ((Error) -> Void)? = nil) {
+    func subscribeToRatesUpdate(baseCurrency: String, successClosure: @escaping (RatesEntity) -> Void, errorClosure: ((Error) -> Void)?) {
         self.baseCurrency = baseCurrency
         self.succesClosure = successClosure
+        self.errorClosure = errorClosure
     }
     
     @objc private func fetchRates() {

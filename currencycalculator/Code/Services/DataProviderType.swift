@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol DataProviderType {
+protocol DataProviderType: class {
     func getRates(base: String, successHandler: @escaping (RatesEntity) -> Void, errorHandler: @escaping (Error) -> Void)
 }

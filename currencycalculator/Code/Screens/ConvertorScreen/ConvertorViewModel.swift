@@ -40,15 +40,18 @@ class ConvertorViewModel {
         }
     }
     
-    private let currencyService: CurrencyService
+    private let currencyService: CurrencyServiceType
     
-    init(currencyService: CurrencyService) {
+    init(currencyService: CurrencyServiceType) {
         self.currencyService = currencyService
         self.currencyService.subscribeToRatesUpdate(baseCurrency: self.baseCurrency, successClosure: {
             ratesEntity in
             
             self.ratesEntity = ratesEntity
             self.process(ratesEntity: ratesEntity)
+        }, errorClosure: {
+            error in
+            //TODO: handle error if needed
         })
     }
     
