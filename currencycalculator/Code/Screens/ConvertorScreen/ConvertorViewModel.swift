@@ -44,12 +44,12 @@ class ConvertorViewModel {
     
     init(currencyService: CurrencyService) {
         self.currencyService = currencyService
-        self.currencyService.subscribeToRatesUpdate(baseCurrency: self.baseCurrency) {
+        self.currencyService.subscribeToRatesUpdate(baseCurrency: self.baseCurrency, successClosure: {
             ratesEntity in
             
             self.ratesEntity = ratesEntity
             self.process(ratesEntity: ratesEntity)
-        }
+        })
     }
     
     private func process(ratesEntity: RatesEntity) {

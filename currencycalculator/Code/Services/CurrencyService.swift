@@ -10,25 +10,26 @@ import Foundation
 
 class CurrencyService {
     
-    static let timeInterval: TimeInterval = 10
+    static let timeInterval: TimeInterval = 1
     
     private var dataProvider: DataProviderType
     private weak var timer: Timer?
-    private var subscriptionClosure: ((RatesEntity) -> Void)?
+    private var succesClosure: ((RatesEntity) -> Void)?
+    private var errorClosure: ((Error) -> Void)?
     
     var baseCurrency: String?
     
     init(dataProvider: DataProviderType) {
         self.dataProvider = dataProvider
-        self.timer = Timer.scheduledTimer(timeInterval: CurrencyService.timeInterval, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: CurrencyService.timeInterval, target: self, selector: #selector(fetchRates), userInfo: nil, repeats: true)
     }
     
-    func subscribeToRatesUpdate(baseCurrency: String, successClosure: @escaping (RatesEntity) -> Void) {
+    func subscribeToRatesUpdate(baseCurrency: String, successClosure: @escaping (RatesEntity) -> Void, errorClosure: ((Error) -> Void)? = nil) {
         self.baseCurrency = baseCurrency
-        self.subscriptionClosure = successClosure
+        self.succesClosure = successClosure
     }
     
-    @objc private func timerTick() {
+    @objc private func fetchRates() {
         guard let baseCurrency = baseCurrency else {
             return
         }
@@ -36,10 +37,10 @@ class CurrencyService {
         self.dataProvider.getRates(
             base: baseCurrency,
             successHandler: { ratesEntity in
-                self.subscriptionClosure?(ratesEntity)
+                self.succesClosure?(ratesEntity)
             },
             errorHandler: { error in
-                //TODO: add error handling
+                self.errorClosure?(error)
             }
         )
     }
