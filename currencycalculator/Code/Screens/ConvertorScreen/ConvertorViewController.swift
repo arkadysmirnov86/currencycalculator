@@ -31,12 +31,12 @@ class ConvertorViewController: UIViewController {
         viewModel?.ratesChanged = {
             [weak self] in
             
-            self?.updateTable()
+            self?.updateSecondSection()
         }
         viewModel?.isEditingChanged = {
             [weak self] in
             
-            self?.changeEditingState()
+            self?.updateFirstSection()
         }
     }
     
@@ -48,18 +48,16 @@ class ConvertorViewController: UIViewController {
     
     }
     
-    private func updateTable() {
+    private func updateSecondSection() {
         UIView.setAnimationsEnabled(false)
-        tableView?.beginUpdates()
-        tableView?.reloadSections(.secondSection, with: UITableViewRowAnimation.none)
-        tableView?.endUpdates()
+        tableView?.reloadSections(.secondSection, with: UITableViewRowAnimation.automatic)
         UIView.setAnimationsEnabled(true)
     }
     
-    private func changeEditingState() {
+    private func updateFirstSection() {
         tableView?.reloadSections(.firstSection, with: UITableViewRowAnimation.automatic)
         if viewModel.isEditing {
-        tableView?.cellForRow(at: .firstRow)?.becomeFirstResponder()
+            tableView?.cellForRow(at: .firstRow)?.becomeFirstResponder()
         } else {
             view.endEditing(true)
         }
@@ -142,6 +140,10 @@ extension ConvertorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 82.0
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 82.0
     }
 }
