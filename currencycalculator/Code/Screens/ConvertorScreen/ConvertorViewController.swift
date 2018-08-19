@@ -42,7 +42,7 @@ class ConvertorViewController: UIViewController {
     
     private func setupTableView() {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: .cellReuseIdentifier)
-        tableView?.register(UINib(nibName: "EditCurrencyTableViewCell", bundle: nil), forCellReuseIdentifier: .cellReuseIdentifier)
+        tableView?.register(UINib(nibName: String(describing: EditCurrencyTableViewCell.self), bundle: nil), forCellReuseIdentifier: .cellReuseIdentifier)
         tableView?.dataSource = self
         tableView?.delegate = self
     
@@ -163,5 +163,5 @@ private extension IndexPath {
 }
 
 private extension String {
-    static let cellReuseIdentifier = "cell"
+    static let cellReuseIdentifier = String(describing: EditCurrencyTableViewCell.self)
 }
