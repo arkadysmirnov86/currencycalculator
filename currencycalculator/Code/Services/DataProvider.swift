@@ -10,9 +10,15 @@ import Foundation
 
 class DataProvider: DataProviderType {
     
+    var baseURL: String
+    
+    init(baseURL: String = "https://revolut.duckdns.org/") {
+        self.baseURL = baseURL
+    }
+    
     func getRates(base: String, successHandler: @escaping (RatesEntity) -> Void, errorHandler: @escaping (Error) -> Void) {
         
-        if let url = URL(string: .baseURL + base) {
+        if let url = URL(string: baseURL + "latest?base=\(base)") {
             let task = URLSession.shared.dataTask(with: url) { (data, responce, error) in
                 if let error = error {
                     DispatchQueue.main.async(errorHandler, with: error)
@@ -33,13 +39,9 @@ class DataProvider: DataProviderType {
             }
             task.resume()
         } else {
-            errorHandler(DataProviderError.invalidURL)
+            errorHandler(DataProviderError.invalidRequestURL)
         }
         
     }
 }
 
-//TODO: move it to configuration (or config layer)
-private extension String {
-    static let baseURL = "https://revolut.duckdns.org/latest?base="
-}

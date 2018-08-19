@@ -57,6 +57,8 @@ class ConvertorViewModel {
         }, errorClosure: {
             error in
             //TODO: handle error if needed
+            
+            print("error: \(error)")
         })
     }
     

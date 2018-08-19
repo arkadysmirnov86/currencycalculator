@@ -18,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         self.window = window
         
-        let dataProvider = DataProvider()
+        //TODO: you could store it in .plist or .xcconfig
+        let apiBaseUrlString = "https://revolut.duckdns.org/"
+        
+        let dataProvider = DataProvider(baseURL: apiBaseUrlString)
         let rootCoordinator = ConvertorCoordinator(dataProvider: dataProvider, window: window)
         rootCoordinator.start()
         

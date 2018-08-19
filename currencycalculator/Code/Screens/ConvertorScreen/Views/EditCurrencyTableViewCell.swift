@@ -22,14 +22,10 @@ class EditCurrencyTableViewCell: UITableViewCell {
     @IBOutlet weak var rateTextField: UITextField! {
         didSet {
             rateTextField.addTarget(self, action: #selector(rateTextFieldDidChangeValue), for: UIControlEvents.editingChanged)
-//            let toolbar = UIToolbar()
-//            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
-//            toolbar.items = [doneItem]
-//            rateTextField.inputAccessoryView = toolbar
         }
     }
     @IBOutlet weak var rateLabel: UILabel!
-    //REMARK: you could use layers instead view and constraints
+    //REMARK: you could use layers for underline drawing instead this view and constraints
     @IBOutlet weak var underlineView: UIView!
 
     var fieldEditedClosure: ((String?) -> Void)?

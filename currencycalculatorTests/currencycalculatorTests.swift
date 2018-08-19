@@ -10,10 +10,9 @@ import XCTest
 @testable import currencycalculator
 
 class currencycalculatorTests: XCTestCase {
-    //
-    // this test only for delopment. it's not requared to test API methods.
-    // TODO: remove or comment it 
-    //
+
+    // it's not requared to test API methods.
+    // TODO: remove or comment it
     func testGetRates() {
         let exp = expectation(description: "getRates")
         let dataProvider = DataProvider()

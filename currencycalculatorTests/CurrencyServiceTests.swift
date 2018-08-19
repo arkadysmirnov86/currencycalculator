@@ -64,4 +64,53 @@ class CurrencyServiceTests: XCTestCase {
         
         wait(for: [errorExpectation, successExpectation], timeout: 3)
     }
+    
+    func testCurrencyServiceSuccessResultAsync() {
+        let successExpectation = expectation(description: "expectation of successClosure call")
+        successExpectation.assertForOverFulfill = false
+        successExpectation.isInverted = true
+        successExpectation.expectedFulfillmentCount = 2
+        let errorExpectation = expectation(description: "expectation of errorClosure call")
+        errorExpectation.isInverted = true
+        let dataProvider = FakeDataProviderWithTimeout(isSuccess: true)
+        
+        let currencyService = CurrencyService(dataProvider: dataProvider)
+        currencyService.subscribeToRatesUpdate(
+            baseCurrency: "EUR",
+            successClosure: {
+                ratesEntity in
+                successExpectation.fulfill()
+            },
+            errorClosure: {
+                error in
+                errorExpectation.fulfill()
+            })
+        
+        wait(for: [errorExpectation, successExpectation], timeout: 7)
+    }
+    
+    func testCurrencyServiceSuccessErrorAsync() {
+        let errorExpectation = expectation(description: "expectation of errorClosure call")
+        errorExpectation.assertForOverFulfill = false
+        errorExpectation.isInverted = true
+        errorExpectation.expectedFulfillmentCount = 2
+        let successExpectation = expectation(description: "expectation of succesClosure call")
+        successExpectation.isInverted = true
+        let dataProvider = FakeDataProviderWithTimeout(isSuccess: false)
+        
+        let currencyService = CurrencyService(dataProvider: dataProvider)
+        currencyService.subscribeToRatesUpdate(
+            baseCurrency: "EUR",
+            successClosure: {
+                ratesEntity in
+                successExpectation.fulfill()
+        },
+            errorClosure: {
+                error in
+                errorExpectation.fulfill()
+        })
+        
+        wait(for: [errorExpectation, successExpectation], timeout: 7)
+    }
+    
 }

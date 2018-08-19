@@ -16,6 +16,7 @@ class CurrencyService: CurrencyServiceType {
     private weak var timer: Timer?
     private var succesClosure: ((RatesEntity) -> Void)?
     private var errorClosure: ((Error) -> Void)?
+    private var lastTimeStamp = Date()
     
     var baseCurrency: String?
     
@@ -31,6 +32,8 @@ class CurrencyService: CurrencyServiceType {
     }
     
     @objc private func fetchRates() {
+        let timeStamp = Date()
+        lastTimeStamp = timeStamp
         guard let baseCurrency = baseCurrency else {
             return
         }
@@ -38,10 +41,18 @@ class CurrencyService: CurrencyServiceType {
         self.dataProvider.getRates(
             base: baseCurrency,
             successHandler: { ratesEntity in
-                self.succesClosure?(ratesEntity)
+                if timeStamp == self.lastTimeStamp {
+                    self.succesClosure?(ratesEntity)
+                } else {
+                    //TODO: you could log that case, but it's not necessary
+                }
             },
             errorHandler: { error in
-                self.errorClosure?(error)
+                if timeStamp == self.lastTimeStamp {
+                    self.errorClosure?(error)
+                } else {
+                    //TODO: you could log that case, but it's not necessary
+                }
             }
         )
     }

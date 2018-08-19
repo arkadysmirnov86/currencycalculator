@@ -34,6 +34,7 @@
 		A6BA18612129983A008F192B /* FakeCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18602129983A008F192B /* FakeCurrencyService.swift */; };
 		A6BA18632129994A008F192B /* RatesEntity+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18622129994A008F192B /* RatesEntity+Tests.swift */; };
 		A6BA186521299A89008F192B /* ConvertorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA186421299A89008F192B /* ConvertorViewModelTests.swift */; };
+		A6BA18672129A660008F192B /* FakeDataProviderWithTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BA18662129A660008F192B /* FakeDataProviderWithTimeout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		A6BA18602129983A008F192B /* FakeCurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCurrencyService.swift; sourceTree = "<group>"; };
 		A6BA18622129994A008F192B /* RatesEntity+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RatesEntity+Tests.swift"; sourceTree = "<group>"; };
 		A6BA186421299A89008F192B /* ConvertorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertorViewModelTests.swift; sourceTree = "<group>"; };
+		A6BA18662129A660008F192B /* FakeDataProviderWithTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeDataProviderWithTimeout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				A6BA18622129994A008F192B /* RatesEntity+Tests.swift */,
 				A6BA185E212997C1008F192B /* Errors.swift */,
 				A6BA185A2129923C008F192B /* FakeDataProvider.swift */,
+				A6BA18662129A660008F192B /* FakeDataProviderWithTimeout.swift */,
 				A6BA18602129983A008F192B /* FakeCurrencyService.swift */,
 			);
 			path = FakeServices;
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6BA18612129983A008F192B /* FakeCurrencyService.swift in Sources */,
+				A6BA18672129A660008F192B /* FakeDataProviderWithTimeout.swift in Sources */,
 				A6BA186521299A89008F192B /* ConvertorViewModelTests.swift in Sources */,
 				A6BA185F212997C1008F192B /* Errors.swift in Sources */,
 				A6BA18632129994A008F192B /* RatesEntity+Tests.swift in Sources */,

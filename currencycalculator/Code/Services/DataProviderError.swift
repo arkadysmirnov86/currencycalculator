@@ -9,7 +9,7 @@
 import Foundation
 
 enum DataProviderError: Error {
-    case invalidURL
     case dataIsEmpty
+    case invalidRequestURL
 }
 
