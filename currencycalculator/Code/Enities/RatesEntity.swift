@@ -17,6 +17,12 @@ struct RatesEntity: Decodable {
         case base, date, rates
     }
     
+    init(base: String, date: Date, rates: [String: Decimal]) {
+        self.base = base
+        self.date = date
+        self.rates = rates
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RatesEntity.CodingKeys.self)
         

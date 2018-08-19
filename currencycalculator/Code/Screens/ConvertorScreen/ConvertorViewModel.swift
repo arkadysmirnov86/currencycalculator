@@ -10,12 +10,14 @@ import Foundation
 
 class ConvertorViewModel {
     
+    private static let defaultBaseRate = RateModel(currency: "EUR", value: 100)
     private var ratesEntity: RatesEntity?
     
-    var ratesChanged: VoidClosure?
-    private (set) var rates: [RateModel] = [RateModel(currency: "EUR", value: 100)]
     
-    var baseValue: Decimal = 100.0 {
+    var ratesChanged: VoidClosure? 
+    private (set) var rates: [RateModel]
+    
+    var baseValue: Decimal {
         didSet {
             rates[0].value = baseValue
             if let ratesList = ratesEntity {
@@ -23,7 +25,7 @@ class ConvertorViewModel {
             }
         }
     }
-    var baseCurrency: String = "EUR" {
+    var baseCurrency: String {
         didSet {
             if let index = rates.index(where: { $0.currency == baseCurrency }) {
                 let baseRate = rates.remove(at: index)
@@ -42,8 +44,11 @@ class ConvertorViewModel {
     
     private let currencyService: CurrencyServiceType
     
-    init(currencyService: CurrencyServiceType) {
+    init(currencyService: CurrencyServiceType, defaultBaseRate: RateModel = ConvertorViewModel.defaultBaseRate) {
+        self.baseCurrency = defaultBaseRate.currency
+        self.baseValue = defaultBaseRate.value
         self.currencyService = currencyService
+        self.rates = [defaultBaseRate]
         self.currencyService.subscribeToRatesUpdate(baseCurrency: self.baseCurrency, successClosure: {
             ratesEntity in
             
