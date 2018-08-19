@@ -50,9 +50,7 @@ class ConvertorViewController: UIViewController {
     
     private func updateTable() {
         UIView.setAnimationsEnabled(false)
-        tableView?.beginUpdates()
         tableView?.reloadSections(.secondSection, with: UITableViewRowAnimation.none)
-        tableView?.endUpdates()
         UIView.setAnimationsEnabled(true)
     }
     
@@ -142,6 +140,10 @@ extension ConvertorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 82.0
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 82.0
     }
 }
