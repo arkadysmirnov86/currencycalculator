@@ -28,6 +28,23 @@ class ConvertorViewModelTests: XCTestCase {
         wait(for: [successExpectation], timeout: 1)
     }
     
+    func testRatesNotChanged() {
+        let successExpectation = expectation(description: "expectation of not calling ratesChanged ")
+        successExpectation.isInverted = true
+        
+        let currencyService = FakeCurrencyService()
+        let defaultBaseRate = RateModel(currency: "FAKE", value: 100.0)
+        
+        let viewModel = ConvertorViewModel(currencyService: currencyService, defaultBaseRate: defaultBaseRate)
+        viewModel.ratesChanged = {
+            successExpectation.fulfill()
+        }
+        
+        currencyService.raiseError()
+        
+        wait(for: [successExpectation], timeout: 1)
+    }
+    
     func testisEditingChanged() {
         let successExpectation = expectation(description: "expectation of isEditingChanged call")
         successExpectation.expectedFulfillmentCount = 2
