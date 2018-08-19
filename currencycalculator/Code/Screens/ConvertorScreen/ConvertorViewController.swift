@@ -69,10 +69,12 @@ class ConvertorViewController: UIViewController {
         let userInfo = notification.userInfo
         let keyboardFrame = userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect
         tableView?.contentInset.bottom = keyboardFrame.height
+        tableView?.scrollIndicatorInsets.bottom = keyboardFrame.height
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
         tableView?.contentInset.bottom = 0
+        tableView?.scrollIndicatorInsets.bottom = 0
     }
     
     deinit {
