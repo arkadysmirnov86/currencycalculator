@@ -11,40 +11,40 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="66" id="FUt-ln-P7H" customClass="EditCurrencyTableViewCell" customModule="currencycalculator" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="FUt-ln-P7H" customClass="EditCurrencyTableViewCell" customModule="currencycalculator" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FUt-ln-P7H" id="JpK-8l-Inl">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mAH-Kn-kVR">
-                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                        <rect key="frame" x="16" y="16" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="7t8-fR-KLk"/>
                             <constraint firstAttribute="width" constant="50" id="Y9u-BG-g5c"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6G-2U-gz5">
-                        <rect key="frame" x="66" y="8" width="43.5" height="20.5"/>
+                        <rect key="frame" x="74" y="16" width="43.5" height="20.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-IS-DnC">
-                        <rect key="frame" x="66" y="39.5" width="248" height="18"/>
+                        <rect key="frame" x="74" y="48.5" width="232" height="18"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="value" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xH8-Uf-mCV">
-                        <rect key="frame" x="322" y="8" width="45" height="49.5"/>
+                        <rect key="frame" x="314" y="8" width="45" height="66.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSO-Zx-zXJ">
-                        <rect key="frame" x="322" y="8" width="45" height="49.5"/>
+                        <rect key="frame" x="314" y="8" width="45" height="66.5"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="S2P-v8-K0T"/>
                         </constraints>
@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9k3-Qe-j4A">
-                        <rect key="frame" x="322" y="53.5" width="45" height="4"/>
+                        <rect key="frame" x="314" y="70.5" width="45" height="4"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="4" id="UwR-Zo-V2W"/>
@@ -61,13 +61,13 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="mAH-Kn-kVR" secondAttribute="bottom" constant="8" id="47B-cM-bLj"/>
-                    <constraint firstAttribute="trailing" secondItem="rSO-Zx-zXJ" secondAttribute="trailing" constant="8" id="4a0-hY-iy8"/>
-                    <constraint firstItem="p6G-2U-gz5" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="8" id="6gq-Rg-pkD"/>
+                    <constraint firstAttribute="bottom" secondItem="mAH-Kn-kVR" secondAttribute="bottom" constant="16" id="47B-cM-bLj"/>
+                    <constraint firstAttribute="trailing" secondItem="rSO-Zx-zXJ" secondAttribute="trailing" constant="16" id="4a0-hY-iy8"/>
+                    <constraint firstItem="p6G-2U-gz5" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="16" id="6gq-Rg-pkD"/>
                     <constraint firstItem="rSO-Zx-zXJ" firstAttribute="leading" secondItem="bfh-IS-DnC" secondAttribute="trailing" constant="8" id="7Ee-H9-yQ0"/>
                     <constraint firstAttribute="bottom" secondItem="rSO-Zx-zXJ" secondAttribute="bottom" constant="8" id="7MW-7U-GzD"/>
-                    <constraint firstItem="mAH-Kn-kVR" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="8" id="Ahu-4J-ZUl"/>
-                    <constraint firstAttribute="trailing" secondItem="xH8-Uf-mCV" secondAttribute="trailing" constant="8" id="CJG-k0-QH7"/>
+                    <constraint firstItem="mAH-Kn-kVR" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="16" id="Ahu-4J-ZUl"/>
+                    <constraint firstAttribute="trailing" secondItem="xH8-Uf-mCV" secondAttribute="trailing" constant="16" id="CJG-k0-QH7"/>
                     <constraint firstItem="p6G-2U-gz5" firstAttribute="leading" secondItem="mAH-Kn-kVR" secondAttribute="trailing" constant="8" id="Cc0-Kx-jd6"/>
                     <constraint firstItem="9k3-Qe-j4A" firstAttribute="bottom" secondItem="rSO-Zx-zXJ" secondAttribute="bottom" id="O9w-5G-fKb"/>
                     <constraint firstItem="9k3-Qe-j4A" firstAttribute="centerX" secondItem="rSO-Zx-zXJ" secondAttribute="centerX" id="QrS-2n-eWh"/>
@@ -76,9 +76,9 @@
                     <constraint firstItem="xH8-Uf-mCV" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="8" id="eoI-fA-KzC"/>
                     <constraint firstItem="bfh-IS-DnC" firstAttribute="leading" secondItem="mAH-Kn-kVR" secondAttribute="trailing" constant="8" id="fdV-LD-zWV"/>
                     <constraint firstItem="rSO-Zx-zXJ" firstAttribute="top" secondItem="JpK-8l-Inl" secondAttribute="top" constant="8" id="iGO-lo-Dj0"/>
-                    <constraint firstAttribute="bottom" secondItem="bfh-IS-DnC" secondAttribute="bottom" constant="8" id="kHM-3X-bpL"/>
+                    <constraint firstAttribute="bottom" secondItem="bfh-IS-DnC" secondAttribute="bottom" constant="16" id="kHM-3X-bpL"/>
                     <constraint firstItem="xH8-Uf-mCV" firstAttribute="leading" secondItem="bfh-IS-DnC" secondAttribute="trailing" constant="8" id="qfQ-gU-9Pv"/>
-                    <constraint firstItem="mAH-Kn-kVR" firstAttribute="leading" secondItem="JpK-8l-Inl" secondAttribute="leading" constant="8" id="yGT-9h-PQl"/>
+                    <constraint firstItem="mAH-Kn-kVR" firstAttribute="leading" secondItem="JpK-8l-Inl" secondAttribute="leading" constant="16" id="yGT-9h-PQl"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -89,7 +89,7 @@
                 <outlet property="rateTextField" destination="xH8-Uf-mCV" id="E6p-ij-iN2"/>
                 <outlet property="underlineView" destination="9k3-Qe-j4A" id="uVE-h6-HLy"/>
             </connections>
-            <point key="canvasLocation" x="-37.5" y="105"/>
+            <point key="canvasLocation" x="-37.5" y="113.5"/>
         </tableViewCell>
     </objects>
 </document>
