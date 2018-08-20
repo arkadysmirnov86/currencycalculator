@@ -10,6 +10,8 @@ import UIKit
 
 class EditCurrencyTableViewCell: UITableViewCell {
     
+    static let cellHeight: CGFloat = 82.0
+    
     @IBOutlet weak var currencyImageView: UIImageView! {
         didSet {
             currencyImageView.layer.cornerRadius = 25

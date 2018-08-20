@@ -31,12 +31,12 @@ class ConvertorViewController: UIViewController {
         viewModel?.ratesChanged = {
             [weak self] in
             
-            self?.updateSecondSection()
+            self?.updateRates()
         }
         viewModel?.isEditingChanged = {
             [weak self] in
             
-            self?.updateFirstSection()
+            self?.updateEditState()
         }
     }
     
@@ -48,16 +48,16 @@ class ConvertorViewController: UIViewController {
     
     }
     
-    private func updateSecondSection() {
+    private func updateRates() {
         UIView.setAnimationsEnabled(false)
         tableView?.reloadSections(.secondSection, with: UITableViewRowAnimation.none)
         UIView.setAnimationsEnabled(true)
     }
     
-    private func updateFirstSection() {
+    private func updateEditState() {
         tableView?.reloadSections(.firstSection, with: UITableViewRowAnimation.automatic)
         if viewModel.isEditing {
-        tableView?.cellForRow(at: .firstRow)?.becomeFirstResponder()
+            tableView?.cellForRow(at: .firstRow)?.becomeFirstResponder()
         } else {
             view.endEditing(true)
         }
@@ -76,8 +76,7 @@ class ConvertorViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-       NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -140,11 +139,11 @@ extension ConvertorViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 82.0
+        return EditCurrencyTableViewCell.cellHeight
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 82.0
+        return EditCurrencyTableViewCell.cellHeight
     }
 }
 

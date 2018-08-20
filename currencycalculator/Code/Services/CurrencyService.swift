@@ -22,7 +22,10 @@ class CurrencyService: CurrencyServiceType {
     
     init(dataProvider: DataProviderType) {
         self.dataProvider = dataProvider
-        self.timer = Timer.scheduledTimer(timeInterval: CurrencyService.timeInterval, target: self, selector: #selector(fetchRates), userInfo: nil, repeats: true)
+        // Uncomment line bellow if you think about instantiating CurrencyService from background queue
+        //DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(timeInterval: CurrencyService.timeInterval, target: self, selector: #selector(self.fetchRates), userInfo: nil, repeats: true)
+        //}
     }
     
     func subscribeToRatesUpdate(baseCurrency: String, successClosure: @escaping (RatesEntity) -> Void, errorClosure: ((Error) -> Void)?) {
