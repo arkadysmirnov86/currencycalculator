@@ -1,0 +1,6 @@
+framework module Pods_currencycalculatorTests {
+  umbrella header "Pods-currencycalculatorTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
